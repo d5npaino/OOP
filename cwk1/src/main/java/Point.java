@@ -21,19 +21,43 @@ public class Point {
   private static final double MIN_LATITUDE = -90.0;
   private static final double MAX_LATITUDE = 90.0;
   private static final double MEAN_EARTH_RADIUS = 6.371009e+6;
+  private ZonedDateTime time;
+  private double longitude;
+  private double latitude;
+  private double elevation;
 
   // TODO: Create a stub for the constructor
-
+public Point(ZonedDateTime timeInput, double longitudeInput, double latitudeInput, double elevationInput) {
+  if (longitudeInput < MIN_LONGITUDE || longitudeInput > MAX_LONGITUDE || latitudeInput < MIN_LATITUDE || latitudeInput > MAX_LATITUDE) {
+            throw new GPSException("longitude/latitude values are invalid");
+  }
+    this.time = timeInput; 
+        this.longitude = longitudeInput; 
+        this.latitude = latitudeInput;
+        this.elevation = elevationInput;
+        
+}
   // TODO: Create a stub for getTime()
-
+public ZonedDateTime getTime () {
+  return time;
+}
   // TODO: Create a stub for getLatitude()
-
+public double getLatitude () {
+  return latitude;
+}
   // TODO: Create a stub for getLongitude()
-
+public double getLongitude () {
+return longitude;
+}
   // TODO: Create a stub for getElevation()
-
+public double getElevation () {
+return elevation;
+}
   // TODO: Create a stub for toString()
-
+public String toString () {
+ String formattedString = String.format("(%.5f, %.5f), %.1f m", longitude, latitude, elevation);
+ return formattedString;
+}
   // IMPORTANT: Do not alter anything beneath this comment!
 
   /**
