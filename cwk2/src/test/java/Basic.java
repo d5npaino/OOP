@@ -14,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-
 public class Basic {
   private static final int DECK_SIZE = 52;
   private static final int SMALL_SHOE_SIZE = 6 * DECK_SIZE;
@@ -62,58 +61,53 @@ public class Basic {
   @DisplayName("BaccaratCard objects are created properly")
   public void cardCreation() {
     assertAll(
-      () -> assertThat(aceClubs.getRank(), is(Card.Rank.ACE)),
-      () -> assertThat(aceClubs.getSuit(), is(Card.Suit.CLUBS))
-    );
+        () -> assertThat(aceClubs.getRank(), is(Card.Rank.ACE)),
+        () -> assertThat(aceClubs.getSuit(), is(Card.Suit.CLUBS)));
   }
 
   @Test
   @DisplayName("BaccaratCard has the correct string representation")
   public void cardStringRepresentation() {
     assertAll(
-      () -> assertThat(aceClubs.toString(), is("A\u2663")),
-      () -> assertThat(nineDiamonds.toString(), is("9\u2666")),
-      () -> assertThat(tenHearts.toString(), is("T\u2665")),
-      () -> assertThat(kingSpades.toString(), is("K\u2660"))
-    );
+        () -> assertThat(aceClubs.toString(), is("A\u2663")),
+        () -> assertThat(nineDiamonds.toString(), is("9\u2666")),
+        () -> assertThat(tenHearts.toString(), is("T\u2665")),
+        () -> assertThat(kingSpades.toString(), is("K\u2660")));
   }
 
   @Test
   @DisplayName("BaccaratCard objects can be tested for equality")
   public void cardEquality() {
     assertAll(
-      () -> assertThat(aceClubs.equals(aceClubs), is(true)),
-      () -> assertThat(aceClubs.equals(new BaccaratCard(Card.Rank.ACE, Card.Suit.CLUBS)), is(true)),
-      () -> assertThat(aceClubs.equals(twoClubs), is(false)),
-      () -> assertThat(aceClubs.equals(aceHearts), is(false)),
-      () -> assertThat(aceClubs.equals("Ace of Clubs"), is(false))
-    );
+        () -> assertThat(aceClubs.equals(aceClubs), is(true)),
+        () -> assertThat(aceClubs.equals(new BaccaratCard(Card.Rank.ACE, Card.Suit.CLUBS)), is(true)),
+        () -> assertThat(aceClubs.equals(twoClubs), is(false)),
+        () -> assertThat(aceClubs.equals(aceHearts), is(false)),
+        () -> assertThat(aceClubs.equals("Ace of Clubs"), is(false)));
   }
 
   @Test
   @DisplayName("BaccaratCard objects can be compared & ordered")
   public void cardComparison() {
     assertAll(
-      () -> assertThat(aceClubs.compareTo(aceClubs), is(0)),
-      () -> assertThat(aceClubs.compareTo(twoClubs), lessThan(0)),
-      () -> assertThat(twoClubs.compareTo(aceClubs), greaterThan(0)),
-      () -> assertThat(aceClubs.compareTo(aceHearts), lessThan(0)),
-      () -> assertThat(aceHearts.compareTo(aceClubs), greaterThan(0)),
-      () -> assertThat(nineDiamonds.compareTo(aceHearts), lessThan(0)),
-      () -> assertThat(tenHearts.compareTo(kingSpades), lessThan(0))
-    );
+        () -> assertThat(aceClubs.compareTo(aceClubs), is(0)),
+        () -> assertThat(aceClubs.compareTo(twoClubs), lessThan(0)),
+        () -> assertThat(twoClubs.compareTo(aceClubs), greaterThan(0)),
+        () -> assertThat(aceClubs.compareTo(aceHearts), lessThan(0)),
+        () -> assertThat(aceHearts.compareTo(aceClubs), greaterThan(0)),
+        () -> assertThat(nineDiamonds.compareTo(aceHearts), lessThan(0)),
+        () -> assertThat(tenHearts.compareTo(kingSpades), lessThan(0)));
   }
 
   @Test
   @DisplayName("BaccaratCard values are computed correctly")
   public void cardValue() {
     assertAll(
-      () -> assertThat(aceClubs.value(), is(1)),
-      () -> assertThat(twoClubs.value(), is(2)),
-      () -> assertThat(nineDiamonds.value(), is(9)),
-      () -> assertThat(tenHearts.value(), is(0)),
-      () -> assertThat(kingSpades.value(), is(0))
-    );
+        () -> assertThat(aceClubs.value(), is(1)),
+        () -> assertThat(twoClubs.value(), is(2)),
+        () -> assertThat(nineDiamonds.value(), is(9)),
+        () -> assertThat(tenHearts.value(), is(0)),
+        () -> assertThat(kingSpades.value(), is(0)));
   }
 
   // BaccaratHand
@@ -128,19 +122,17 @@ public class Basic {
   @DisplayName("Cards added to hand correctly")
   public void addingCardsToHand() {
     assertAll(
-      () -> assertThat(handOneCard.size(), is(1)),
-      () -> assertThat(handTwoCards.size(), is(2))
-    );
+        () -> assertThat(handOneCard.size(), is(1)),
+        () -> assertThat(handTwoCards.size(), is(2)));
   }
 
   @Test
   @DisplayName("BaccaratHand values computed correctly")
   public void handValue() {
     assertAll(
-      () -> assertThat(hand.value(), is(0)),
-      () -> assertThat(handOneCard.value(), is(9)),
-      () -> assertThat(handTwoCards.value(), is(1))
-    );
+        () -> assertThat(hand.value(), is(0)),
+        () -> assertThat(handOneCard.value(), is(9)),
+        () -> assertThat(handTwoCards.value(), is(1)));
   }
 
   @Test
@@ -155,22 +147,20 @@ public class Basic {
     nat2.add(new BaccaratCard(Card.Rank.JACK, Card.Suit.HEARTS));
 
     assertAll(
-      () -> assertThat(hand.isNatural(), is(false)),
-      () -> assertThat(handOneCard.isNatural(), is(false)),
-      () -> assertThat(handTwoCards.isNatural(), is(false)),
-      () -> assertThat(nat1.isNatural(), is(true)),
-      () -> assertThat(nat2.isNatural(), is(true))
-    );
+        () -> assertThat(hand.isNatural(), is(false)),
+        () -> assertThat(handOneCard.isNatural(), is(false)),
+        () -> assertThat(handTwoCards.isNatural(), is(false)),
+        () -> assertThat(nat1.isNatural(), is(true)),
+        () -> assertThat(nat2.isNatural(), is(true)));
   }
 
   @Test
   @DisplayName("BaccaratHand has the correct string representation")
   public void handStringRepresentation() {
     assertAll(
-      () -> assertThat(hand.toString(), is("")),
-      () -> assertThat(handOneCard.toString(), is("9\u2666")),
-      () -> assertThat(handTwoCards.toString(), is("9\u2666 2\u2663"))
-    );
+        () -> assertThat(hand.toString(), is("")),
+        () -> assertThat(handOneCard.toString(), is("9\u2666")),
+        () -> assertThat(handTwoCards.toString(), is("9\u2666 2\u2663")));
   }
 
   // Shoe
@@ -179,19 +169,17 @@ public class Basic {
   @DisplayName("Shoes are created with the correct numbers of cards")
   public void shoeCreation() {
     assertAll(
-      () -> assertThat(smallShoe.size(), is(SMALL_SHOE_SIZE)),
-      () -> assertThat(largeShoe.size(), is(LARGE_SHOE_SIZE))
-    );
+        () -> assertThat(smallShoe.size(), is(SMALL_SHOE_SIZE)),
+        () -> assertThat(largeShoe.size(), is(LARGE_SHOE_SIZE)));
   }
 
   @Test
   @DisplayName("CardException when creating a Shoe with wrong number of decks")
   public void shoeCreationException() {
     assertAll(
-      () -> assertThrows(CardException.class, () -> new Shoe(5)),
-      () -> assertThrows(CardException.class, () -> new Shoe(7)),
-      () -> assertThrows(CardException.class, () -> new Shoe(9))
-    );
+        () -> assertThrows(CardException.class, () -> new Shoe(5)),
+        () -> assertThrows(CardException.class, () -> new Shoe(7)),
+        () -> assertThrows(CardException.class, () -> new Shoe(9)));
   }
 
   @Test
@@ -201,12 +189,11 @@ public class Basic {
     Card card2 = smallShoe.deal();
     Card card3 = smallShoe.deal();
     assertAll(
-      () -> assertThat(smallShoe.size(), is(SMALL_SHOE_SIZE - 3)),
-      () -> assertThat(card1 instanceof BaccaratCard, is(true)),
-      () -> assertThat(card1, equalTo(aceClubs)),
-      () -> assertThat(card2, equalTo(twoClubs)),
-      () -> assertThat(card3, equalTo(threeClubs))
-    );
+        () -> assertThat(smallShoe.size(), is(SMALL_SHOE_SIZE - 3)),
+        () -> assertThat(card1 instanceof BaccaratCard, is(true)),
+        () -> assertThat(card1, equalTo(aceClubs)),
+        () -> assertThat(card2, equalTo(twoClubs)),
+        () -> assertThat(card3, equalTo(threeClubs)));
   }
 
   @Test
@@ -214,7 +201,7 @@ public class Basic {
   public void shuffle() {
     smallShoe.shuffle();
     Card[] cards = new Card[] { smallShoe.deal(), smallShoe.deal(), smallShoe.deal() };
-    Card[] unshuffled = new Card [] { aceClubs, twoClubs, threeClubs };
+    Card[] unshuffled = new Card[] { aceClubs, twoClubs, threeClubs };
     assertThat(cards, not(unshuffled));
   }
 
